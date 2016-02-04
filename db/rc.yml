@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: mattermost-db
+spec:
+  replicas: 1
+  selector:
+    app: mattermost-db
+  template:
+    metadata:
+      labels:
+        app: mattermost-db
+    spec:
+      containers:
+      - name: db
+        image: redspread-apps/mattermost-db:latest
+        volumeMounts:
+        - name: localtime
+          mountPath: /etc/localtime
+        - name: postgres
+          mountPath: /var/lib/postgresql/data
+        ports:
+        - containerPort: 5432
+          protocol: TCP
+      volumes:
+      - name: localtime
+        hostPath:
+          path: /etc/localtime
+      - name: postgres
+        persistentVolumeClaim:
+          claimName: mattermost-postgres
+      restartPolicy: Always

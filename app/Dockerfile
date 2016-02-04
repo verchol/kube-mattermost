@@ -20,4 +20,6 @@ COPY docker-entry.sh /
 RUN chmod +x /docker-entry.sh
 ENTRYPOINT /docker-entry.sh
 
+RUN rm /mattermost/config/config.json
+
 EXPOSE 80

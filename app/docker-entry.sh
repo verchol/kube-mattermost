@@ -4,14 +4,14 @@ echo -ne "Configure database connection..."
 if [ ! -f $config ]
 then
     cp /config.template.json $config
-    sed -Ei "s/DB_PORT/$DB_PORT_5432_TCP_PORT/" $config
+    sed -Ei "s/DB_PORT/$MATTERMOST_DB_SERVICE_PORT/" $config
     echo OK
 else
     echo SKIP
 fi
 
 echo "Wait until database is ready..."
-until nc -z db $DB_PORT_5432_TCP_PORT
+until nc -z mattermost-db $MATTERMOST_DB_SERVICE_PORT
 do
     sleep 1
 done

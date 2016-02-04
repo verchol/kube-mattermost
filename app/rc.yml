@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: mattermost-app
+spec:
+  replicas: 1
+  selector:
+    app: mattermost-app
+  template:
+    metadata:
+      labels:
+        app: mattermost-app
+    spec:
+      containers:
+      - name: app
+        image: redspread-apps/mattermost-app:latest
+        imagePullPolicy: Always
+        volumeMounts:
+        - name: localtime
+          mountPath: /etc/localtime
+        - name: assets
+          mountPath: /mattermost/data
+        ports:
+        - containerPort: 80
+          protocol: TCP
+      volumes:
+      - name: localtime
+        hostPath:
+          path: /etc/localtime
+      - name: assets
+        persistentVolumeClaim:
+          claimName: mattermost-assets
+      restartPolicy: Always

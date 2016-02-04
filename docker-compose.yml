@@ -1,10 +1,13 @@
 db:
   build: db
   volumes:
+    # Host provider specific disk/claim
     - ./volumes/db/var/lib/postgresql/data:/var/lib/postgresql/data
+    # HostPathVolumeSource
     - /etc/localtime:/etc/localtime:ro
 app:
   build: app
+  # Docker links: allow you to connect two Docker containers together
   links:
     - db:db
   volumes:
