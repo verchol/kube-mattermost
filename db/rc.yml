@@ -17,6 +17,7 @@ spec:
         volumeMounts:
         - name: localtime
           mountPath: /etc/localtime
+     # Must complete commented out section below
         - name: postgres
           mountPath: /var/lib/postgresql/data
         ports:
@@ -26,7 +27,14 @@ spec:
       - name: localtime
         hostPath:
           path: /etc/localtime
-      - name: postgres
-        persistentVolumeClaim:
-          claimName: mattermost-postgres
+     #  Google Cloud Platform Persistent Volume Disk
+     # - name: postgres
+     #   gcePersistentDisk:
+     #     pdName: mattermost-postgres
+     #     fsType: "ext4"
+     # AWS Persistent Volume Disk
+     # - name: postgres
+     #   awsElasticBlockStore:
+     #     volumeID: mattermost-postgres
+     #     fsType: "ext4"
       restartPolicy: Always
