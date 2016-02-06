@@ -13,7 +13,7 @@ spec:
     spec:
       containers:
       - name: db
-        image: redspread-apps/mattermost-db:latest
+        image: redspreadapps/mattermost-db:latest
         volumeMounts:
         - name: localtime
           mountPath: /etc/localtime
@@ -23,15 +23,18 @@ spec:
         ports:
         - containerPort: 5432
           protocol: TCP
+        env:
+        - name: PGDATA
+          value: /var/lib/postgresql/data/pgdata
       volumes:
       - name: localtime
         hostPath:
           path: /etc/localtime
      #  Google Cloud Platform Persistent Volume Disk
-     # - name: postgres
-     #   gcePersistentDisk:
-     #     pdName: mattermost-postgres
-     #     fsType: "ext4"
+      - name: postgres
+        gcePersistentDisk:
+          pdName: mattermost-postgres
+          fsType: "ext4"
      # AWS Persistent Volume Disk
      # - name: postgres
      #   awsElasticBlockStore:
