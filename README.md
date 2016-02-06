@@ -18,13 +18,13 @@
 1. Set Postgres username and password in `db/make_db.sh`. 
 2. <a href="http://docs.mattermost.com/install/smtp-email-setup.html">Enable email</a> in `config.template.json`.
 3. Create persistent disks, and make sure to un-comment the appropriate volume sections in `app/rc.yml` and `db/rc.yml`.  
-Google: `gcloud compute disks create --size=30GB --zone=us-central1-f mattermost-postgres`  
-`gcloud compute disks create --size=30GB --zone=us-central1-f mattermost-assets`  
+Google: `gcloud compute disks create --size=30GB mattermost-postgres`  
+`gcloud compute disks create --size=30GB mattermost-assets`  
 AWS:  
 `aws ec2 create-volume --availability-zone <ZONE> --size 10 --volume-type gp2`  
 `aws ec2 create-volume --availability-zone <ZONE> --size 10 --volume-type gp2`  
 
-Notes: Make sure your zone is set correctly - `us-central1-f` is the zone I set in the <a href="https://blog.redspread.com/2016/02/04/google-container-engine-quickstart/">example GKE walkthrough</a>. The volume sizes are suggested, but you can change them to whatever you'd like. There are some limitations to using AWS volumes, which you can <a href="https://github.com/kubernetes/kubernetes/blob/master/docs/user-guide/volumes.md#awselasticblockstore">read about here</a>.
+Notes: The volume sizes are suggested, but you can change them to whatever you'd like. There are some limitations to using AWS volumes, which you can <a href="https://github.com/kubernetes/kubernetes/blob/master/docs/user-guide/volumes.md#awselasticblockstore">read about here</a>.
 
 ##Troubleshooting
 
