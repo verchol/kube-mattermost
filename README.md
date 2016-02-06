@@ -18,16 +18,16 @@
 1. Set Postgres username and password in `db/make_db.sh`. 
 2. <a href="http://docs.mattermost.com/install/smtp-email-setup.html">Enable email</a> in `config.template.json`.
 3. Create persistent disks, and make sure to un-comment the appropriate volume sections in `app/rc.yml` and `db/rc.yml`.  
-Google: `gcloud compute disks create --size=30GB --zone=<ZONE> mattermost-postgres`  
-`gcloud compute disks create --size=30GB --zone=<ZONE> mattermost-assets`  
+Google: `gcloud compute disks create --size=30GB --zone=us-central1-f mattermost-postgres`  
+`gcloud compute disks create --size=30GB --zone=us-central1-f mattermost-assets`  
 AWS:  
 `aws ec2 create-volume --availability-zone <ZONE> --size 10 --volume-type gp2`  
 `aws ec2 create-volume --availability-zone <ZONE> --size 10 --volume-type gp2`  
 
-Notes: The volume sizes are suggested, but you can change them to whatever you'd like. There are some limitations to using AWS volumes, which you can <a href="https://github.com/kubernetes/kubernetes/blob/master/docs/user-guide/volumes.md#awselasticblockstore">read about here</a>.
+Notes: Make sure your zone is set correctly - `us-central1-f` is the zone I set in the <a href="https://blog.redspread.com/2016/02/04/google-container-engine-quickstart/">example GKE walkthrough</a>. The volume sizes are suggested, but you can change them to whatever you'd like. There are some limitations to using AWS volumes, which you can <a href="https://github.com/kubernetes/kubernetes/blob/master/docs/user-guide/volumes.md#awselasticblockstore">read about here</a>.
 
 ##Troubleshooting
 
 Make sure kubectl is set to the correct project, cluster, and zone. For those using Google, <a href="https://blog.redspread.com/2016/01/10/gcloud-cheat-sheet/">here's a cheat sheet</a> to common gcloud errors (auth login, project, zone, and cluster).
 
-Here's the original <a href="https://github.com/npcode/mattermost-docker">Dockerfile and docker-compose setup</a>.
+Here's the original <a href="https://github.com/npcode/mattermost-docker">Dockerfile and docker-compose setup</a> by <a href="http://github.com/npcode">@npcode</a>.

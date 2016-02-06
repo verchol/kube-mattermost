@@ -18,9 +18,9 @@ spec:
         volumeMounts:
         - name: localtime
           mountPath: /etc/localtime
-    # Must complete commented out section below
-        - name: assets
-          mountPath: /mattermost/data
+    # Uncomment this for production use
+        # - name: assets
+        #   mountPath: /mattermost/data
         ports:
         - containerPort: 80
           protocol: TCP
@@ -28,14 +28,14 @@ spec:
       - name: localtime
         hostPath:
           path: /etc/localtime
-     # Google Cloud Platform Persistent Volume Disk
-      - name: assets
-        gcePersistentDisk:
-          pdName: mattermost-assets
-          fsType: "ext4"
-     # AWS Persistent Volume Disk
-     # - name: assets
-     #   awsElasticBlockStore:
-     #     volumeID: mattermost-assets
-     #     fsType: "ext4"
+    # Google Cloud Platform Persistent Volume Disk
+      # - name: assets
+      #   gcePersistentDisk:
+      #     pdName: mattermost-assets
+      #     fsType: "ext4"
+    # AWS Persistent Volume Disk
+      # - name: assets
+      #   awsElasticBlockStore:
+      #     volumeID: mattermost-assets
+      #     fsType: "ext4"
       restartPolicy: Always
