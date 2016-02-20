@@ -15,6 +15,9 @@ spec:
       - name: localtime
         hostPath:
           path: /etc/localtime
+      - name: pgauth
+        secret:
+          secretName: postgres-creds
     # Google Cloud Platform Persistent Volume Disk
       # - name: assets
       #   gcePersistentDisk:

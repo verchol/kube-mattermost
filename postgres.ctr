@@ -1,15 +1,14 @@
 name: postgres
-image: redspreadapps/mattermost-db:latest
+image: redspreadapps/mattermost-db:1
 imagePullPolicy: Always
 volumeMounts:
 - name: localtime
   mountPath: /etc/localtime
+- name: pgauth
+  mountPath: /etc/secrets
 # Uncomment this for production use
 # - name: postgres
 #   mountPath: /var/lib/postgresql/data
-ports:
-- containerPort: 5432
-  protocol: TCP
 env:
 - name: PGDATA
   value: /var/lib/postgresql/data/pgdata

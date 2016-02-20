@@ -1,9 +1,11 @@
 name: app
-image: redspreadapps/mattermost-app:latest
+image: redspreadapps/mattermost-app:1
 imagePullPolicy: Always
 volumeMounts:
 - name: localtime
   mountPath: /etc/localtime
+- name: pgauth
+  mountPath: /etc/pgsecrets
 # Uncomment this for production use
 #
 # - name: assets
