@@ -1,0 +1,13 @@
+name: app
+image: redspreadapps/mattermost-app:latest
+imagePullPolicy: Always
+volumeMounts:
+- name: localtime
+  mountPath: /etc/localtime
+# Uncomment this for production use
+#
+# - name: assets
+#   mountPath: /mattermost/data
+ports:
+- containerPort: 80
+  protocol: TCP
