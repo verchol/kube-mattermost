@@ -2,10 +2,12 @@
 
 ##Quickstart
 
-1. Setup a Kubernetes cluster (on <a href="https://blog.redspread.com/2016/02/04/google-container-engine-quickstart/">Google Container Engine</a> [recommended] or <a href="https://coreos.com/kubernetes/docs/latest/kubernetes-on-aws.html#kube-aws-quickstart">AWS</a>)
-2. Clone the repository: `git clone http://github.com/redspread/kube-mattermost`
-3. Run `spread deploy .` in the cloned directorey.
-4. You should be able to see a Mattermost instance running in your browser with that public IP!
+This assumes you have a <a href="https://blog.redspread.com/2016/02/04/google-container-engine-quickstart/">running Kubernetes cluster</a>.
+
+1. Install Spread with `$ brew tap redspread/spread` then `$ brew install spread` 
+2. Clone <a href="http://mattermost.com">Mattermost</a>, the open source Slack `$ git clone http://github.com/redspread/kube-mattermost`
+5. Deploy Mattermost to Kubernetes: `$ spread deploy .`
+6. Grab the public IP and put it in your browser to see your self-hosted app!
 
 
 ## Recommended for Production
