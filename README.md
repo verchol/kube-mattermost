@@ -2,13 +2,12 @@
 
 ##Quickstart
 
-This assumes you have a <a href="https://blog.redspread.com/2016/02/04/google-container-engine-quickstart/">running Kubernetes cluster</a>.
+This assumes you set up a <a href="https://blog.redspread.com/2016/02/04/google-container-engine-quickstart/">remote</a> or <a href="https://github.com/redspread/localkube">local</a> Kubernetes cluster.
 
-1. Install Spread with `$ brew tap redspread/spread` then `$ brew install spread` 
+1. Install <a href="https://github.com/redspread/spread">Spread</a>. 
 2. Clone <a href="http://mattermost.com">Mattermost</a>, the open source Slack `$ git clone http://github.com/redspread/kube-mattermost`
-5. Deploy Mattermost to Kubernetes: `$ spread deploy .`
-6. Grab the public IP and put it in your browser to see your self-hosted app!
-
+5. Deploy Mattermost to your cluster: `$ spread deploy .`
+6. Grab the IP (remote) or port (local) to see your self-hosted app!
 
 ## Recommended for Production
 Run `spread deploy` to update the cluster after making changes.
@@ -38,6 +37,6 @@ Unless a persistent volume is used, the data stored in postgres will be lost if 
 Notes: The volume sizes are suggested, but you can change them to whatever you'd like.
 ##Troubleshooting
 
-Make sure kubectl is set to the correct project, cluster, and zone. For those using Google, <a href="https://blog.redspread.com/2016/01/10/gcloud-cheat-sheet/">here's a cheat sheet</a> to common gcloud errors (auth login, project, zone, and cluster).
+Make sure kubectl is set to the correct project, cluster, and zone. For those using GKE, <a href="https://blog.redspread.com/2016/01/10/gcloud-cheat-sheet/">here's a cheat sheet</a> to common gcloud errors (auth login, project, zone, and cluster).
 
 Here's the original <a href="https://github.com/npcode/mattermost-docker">Dockerfile and docker-compose setup</a> by <a href="http://github.com/npcode">@npcode</a>.
