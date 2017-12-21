@@ -1,11 +1,12 @@
 apiVersion: extensions/v1beta1
-kind: deployment
+kind: Deployment
 metadata:
   name: mattermost-app
 spec:
   replicas: 1
   selector:
-    app: mattermost-app
+    matchLabels:
+      app: mattermost-app
   template:
     metadata:
       labels:
